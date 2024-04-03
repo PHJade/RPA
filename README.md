@@ -12,6 +12,6 @@ RPA수업 == day1 ~ day15
 
 우편번호실습_RE_04.03 == day22
 
-  *ㄴ이건 쌤코드 closeAll,KillAll 부분 참조함 
+ * ㄴ이건 쌤코드 closeAll,KillAll 부분 참조함 
 
 
