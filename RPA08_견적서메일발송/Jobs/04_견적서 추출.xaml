@@ -1,0 +1,227 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_04_견적서_추출" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_dicConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_str견적서저장경로" Type="InArgument(x:String)" />
+    <x:Property Name="in_str견적서파일명" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:_04_견적서_추출.in_dicConfig>
+    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+  </this:_04_견적서_추출.in_dicConfig>
+  <this:_04_견적서_추출.in_str견적서저장경로>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_04_견적서_추출.in_str견적서저장경로>
+  <this:_04_견적서_추출.in_str견적서파일명>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_04_견적서_추출.in_str견적서파일명>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>971.3333333333334,1978.6666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_04_견적서_추출_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="_04_견적서_추출" sap:VirtualizedContainerService.HintSize="512,1914" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="04_견적서 추출 | Use Browser Chrome: 오피스디포 공식쇼핑몰" sap:VirtualizedContainerService.HintSize="450,714.6666666666666" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="c823cf95-aafa-46e2-aaa7-22ec90c7b4e5" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="416,463.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="str수량" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="전체선택 | Click 'Checkbox'" sap:VirtualizedContainerService.HintSize="354,191.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c823cf95-aafa-46e2-aaa7-22ec90c7b4e5" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.officedepot.co.kr/cart/myCartUpdate.do#link" CvElementArea="492, 904, 26, 26" CvType="CheckBox" DesignTimeRectangle="496, 907, 20, 21" DesignTimeScaleFactor="1.5" ElementType="CheckBox" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='check_all' tableRow='1' tag='INPUT' aaname='전체 선택하기' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='check_all' type='checkbox' tag='INPUT' aaname='전체 선택하기' class='check_all' /&gt;" Guid="61cb5106-bc29-44b3-a56d-76762e9fb68a" InformativeScreenshot="e3414328a614a016ced5ec239c3e315e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='오피스디포 공식쇼핑몰' /&gt;" SearchSteps="Selector" Version="V3" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="465, 833, 106, 33" CvTextArgument="dur74" CvType="Text" DesignTimeRectangle="468, 836, 103, 30" ElementType="Icon" FullSelectorArgument="&lt;webctrl aaname='장바구니' parentid='container' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='장바구니' parentid='container' tag='IMG' type='' class='' /&gt;" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="견적서클릭 | Click 'IMG'" sap:VirtualizedContainerService.HintSize="354,184.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c823cf95-aafa-46e2-aaa7-22ec90c7b4e5" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.officedepot.co.kr/cart/myCartUpdate.do#link" CvElementArea="465, 1337, 136, 70" CvTextArea="503, 1359, 58, 25" CvTextArgument="7444" CvType="Button" DesignTimeRectangle="468, 1340, 132, 66" DesignTimeScaleFactor="1.5" ElementType="Icon" FullSelectorArgument="&lt;webctrl aaname='견적서' parentid='container' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='견적서' parentid='container' tag='IMG' type='' class='' /&gt;" Guid="2998d961-7c74-4cf8-baec-ee45a964416e" InformativeScreenshot="26be1eb79356319bbd621841c0f4e02c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='오피스디포 공식쇼핑몰' /&gt;" SearchSteps="Selector" Version="V3" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-11, -11, 2582, 1562" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAUnSURBVFhH7VVpbFVVEH4UMJEgIYgV2Uup3aC0FLShIEhjihVpU4RoBVuIhbAIRdsqNsiSIGApBLARRCoqNCjSisEiBYKAAgKGzQVcWrZ3b++7b7mvb+977eecua/QNo1LouFPf0zOmTlzZr755ty5BqNhOO6ldADoANABoH0AneJIRtCe1lZnpHeOhzFEnAX9hN7s22z/F9IagAhIQW4bIkmGki2WdErA5wJMDG4ZBtBZGO3jaY0ivX/QN4bWcFqHkbSI+TfSAoBIEM3B5b4TocRPhdR9FOmDg5XFQH44Gba5q2BJX8TJ6gZNhLZwDdTxOZB7JUMdO4MYCbIgmOmccJcVUQjrzQXpEgSgJ5f7jIO74jCaAgE0NTUhYNGgFazXQfQaAf8NicU2bxnkAUlo1Bzw19yGmjYb2ptr+Y5p9PPkPxS3O4URO/0YqNEgWB1Mel9aBXttATDtYXDt+pKDaAUlUKLT4fnqOOvW2UVwbNjJe/enVVTpi7QeZN35YSXUibNQX1wGz/5jkEPHUaxHYZ2xFI4t5bBMXkD6EFiyCuH8oAKWqXmkR7YEoPdW6jYaAVs9fD9cIaSDuNdK4rN60r2H4Np9gPfeM5dgy30LnsOndP3EedKXw3fhZ9aViGfgKj+AQL0DDb9dh3tfNezLNqHR40H929vYR1uyjnOINgUB0MMJiYP/j5sISCqMPUfihqEHzOnz9AsFqyGFj+a9OXchag0GqNNeYl3NzGbdvqFU19Nm8WpdXEQxutHbGMtxBZj6laVouFYLR2m53gp6D8EWxDMi7VW9j97zPxK1FQiYLGh0uGAakQ4tTz9zvrcH8gNJcKwvY93xThnk3k/Ac/Ak61pBMQKqFQ0//Q4tvwTm1DnMVqPHS/HXwb50I9QJOQQggj/f4CMUEkcgBtJhNpzb98JT/R0cGz9BXVQqjD2i4dxRAefWPdTHvbBMWwLn+5+R3+fU512wzlzKVLsrjxLNW6EkZJDfPjRcrYX9jWJIfQjwlt3wVJ3gR25KymoPQAy/YFPidKhjsmBKmE5OAzi5OSUXStRkqMkzWaReSVAi08h3GsxP5kCJmULgH8FNw4OQB02AtmgtzGnzydYfUugoerSzoAzLYH/TqOmQeiRRPpoxlFcHQEgEItu8FUyj7/vL8F25xlSaU1+G+4sjbHftoKqu1cCalU++q9jmqf4WDTU3mTXrC6+xzXv6AgJWDZ4jp+D6aD/8RoU+11sIyCoCihn2whICR8XRXAgyEEcAoiH1TuQA1jmF5BDK+/ri7bBm5/PeubMSzo8rId2fAHlgMtvsyzfDe/wcfGcJ9JmL8H5zFtcNXaA8lq7fX72NYodREV/Dd+4yMZKEur4plDOa8wYZEAAiabI9pQct2gRLxiu8t81dAW3Bat2+ohSeQydhipsKJfxptolq7UWbIT80Bu79R7hCuR9NyMVr+NycOZ9a0xPeo6fhv3qd8gyBsav48vQJ2aoF2uslaPi1lpBegZdEyy9GXVgK3AeO8at2EQO+i7/A8lwen/lrb8G1p4r7zHMjdgrNhXM0QW3wC6pXvktxh8KSmQcffVm+S1dhnpQLld6N1P1xAhDb8hGSdBFzmh4HMxKh9ylE2AVaatF9I+lM/GxiIXWluc62hKBdL0KMXrn3eBpsibSnES5mjPAVccRd/nsKBvScrQHc+ZOJlZzEz6Olfue8rW/QRiB0IFGkt/yTtndPlzYA/isRYO9W+VfyPwH459IBoANAB4B7DGA4/gSUBmTQSwCfNgAAAABJRU5ErkJggg==" InformativeScreenshot="87a87d6a7700d28cd8f3f5c8bdfe5eb1.jpg" Selector="&lt;html app='chrome.exe' title='오피스디포 공식쇼핑몰' /&gt;" Title="오피스디포 공식쇼핑몰" Url="[in_dicConfig(&quot;오피스장바구니&quot;).ToString]" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="04-견적서 다운로드 | Use Browser Chrome: 오피스디포 공식쇼핑몰" sap:VirtualizedContainerService.HintSize="450,1111.3333333333333" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="5b06cfcb-0889-4f3c-ae02-c26d1228ce51" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="416,869.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="354,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="416,266.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'PDF 다운로드'" sap:VirtualizedContainerService.HintSize="354,182" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5b06cfcb-0889-4f3c-ae02-c26d1228ce51" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.officedepot.co.kr/common/report/reportPopup.do?reportUrl=/cart/report.do&amp;reportType=estimate&amp;format=pdf&amp;itemId=1000000005606&amp;estimateSelectItem=1&amp;itemId=-1&amp;popupYn=Y" CvElementArea="239, 1028, 156, 46" CvTextArea="263, 1039, 106, 22" CvTextArgument="PDF C1825" CvType="Button" DesignTimeRectangle="243, 1031, 150, 39" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;webctrl id='btn_pdf' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='btn_pdf' tag='INPUT' type='button' class='' aaname='PDF 다운로드' check:text='PDF 다운로드' /&gt;" Guid="4a8a825f-9211-499e-8525-66be5c855855" InformativeScreenshot="ba3b16f348d20f576f9ecddeaa971a17.png" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='estimate' title='오피스디포 공식쇼핑몰' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="입력모드 = " ClickType="Single" DisplayName="다운로드 버튼 | Click 'grouping'" sap:VirtualizedContainerService.HintSize="354,222" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5b06cfcb-0889-4f3c-ae02-c26d1228ce51" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="851, 116, 48, 48" DesignTimeScaleFactor="1.5" FullSelectorArgument="&lt;ctrl name='오피스디포 공식쇼핑몰' role='document' /&gt;&lt;ctrl name='report.do' role='document' /&gt;&lt;ctrl name='다운로드' role='push button' /&gt;&lt;ctrl role='grouping' /&gt;" FuzzySelectorArgument="&lt;ctrl name='오피스디포 공식쇼핑몰' role='document' /&gt;&lt;ctrl name='report.do' role='document' /&gt;&lt;ctrl name='다운로드' role='push button' /&gt;&lt;ctrl role='grouping' automationid='' /&gt;" Guid="4b53e82b-1bcd-4076-acc5-0f6da3e717c0" InformativeScreenshot="6236cf9737e829898fe603b555688d45.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='오피스디포 공식쇼핑몰 - Chrome' /&gt;" SearchSteps="Selector" Version="V3" Visibility="Interactive" />
+              </uix:NClick.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="탐색기 주소창 | Type Into '주소: 다운로드'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,254.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="HardwareEvents" ScopeIdentifier="5b06cfcb-0889-4f3c-ae02-c26d1228ce51" Text="[in_str견적서저장경로 + &quot;[k(Enter)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="170, 53, 632, 34" DesignTimeScaleFactor="1.5" ElementType="Toolbar" FullSelectorArgument="&lt;wnd ctrlid='1001' title='주소: 다운로드' aaname='주소: 다운로드' cls='ToolbarWindow32' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1001' title='주소: 다운로드' aaname='주소: 다운로드' cls='ToolbarWindow32' check:text='주소: 다운로드' /&gt;" Guid="02e72801-7ad0-4521-9000-d0399851132f" InformativeScreenshot="1e70659da0495b0ea817fe8f1d14bbcd.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='다른 이름으로 저장' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="탐색기 파일명 | Type Into 'report.pdf'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,248" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="HardwareEvents" ScopeIdentifier="5b06cfcb-0889-4f3c-ae02-c26d1228ce51" Text="[in_str견적서파일명 + &quot;[k(Enter)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable CvElementArea="200, 615, 980, 36" CvType="InputBox" DesignTimeRectangle="202, 621, 950, 27" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;wnd aaname='탐색 창' cls='DirectUIHWND' /&gt;&lt;wnd aaname='파일 이름:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' aaname='파일 이름:' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='탐색 창' cls='DirectUIHWND' /&gt;&lt;wnd aaname='파일 이름:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' aaname='파일 이름:' /&gt;" Guid="1f572eb9-a806-4540-9fc1-72d67d4d472a" InformativeScreenshot="21cf8e16793ab17d15e0e82887f71cf7.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='다른 이름으로 저장' /&gt;" SearchSteps="Selector" Version="V3" Visibility="Interactive" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="717, 274, 1158, 1186" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAUnSURBVFhH7VVpbFVVEH4UMJEgIYgV2Uup3aC0FLShIEhjihVpU4RoBVuIhbAIRdsqNsiSIGApBLARRCoqNCjSisEiBYKAAgKGzQVcWrZ3b++7b7mvb+977eecua/QNo1LouFPf0zOmTlzZr755ty5BqNhOO6ldADoANABoH0AneJIRtCe1lZnpHeOhzFEnAX9hN7s22z/F9IagAhIQW4bIkmGki2WdErA5wJMDG4ZBtBZGO3jaY0ivX/QN4bWcFqHkbSI+TfSAoBIEM3B5b4TocRPhdR9FOmDg5XFQH44Gba5q2BJX8TJ6gZNhLZwDdTxOZB7JUMdO4MYCbIgmOmccJcVUQjrzQXpEgSgJ5f7jIO74jCaAgE0NTUhYNGgFazXQfQaAf8NicU2bxnkAUlo1Bzw19yGmjYb2ptr+Y5p9PPkPxS3O4URO/0YqNEgWB1Mel9aBXttATDtYXDt+pKDaAUlUKLT4fnqOOvW2UVwbNjJe/enVVTpi7QeZN35YSXUibNQX1wGz/5jkEPHUaxHYZ2xFI4t5bBMXkD6EFiyCuH8oAKWqXmkR7YEoPdW6jYaAVs9fD9cIaSDuNdK4rN60r2H4Np9gPfeM5dgy30LnsOndP3EedKXw3fhZ9aViGfgKj+AQL0DDb9dh3tfNezLNqHR40H929vYR1uyjnOINgUB0MMJiYP/j5sISCqMPUfihqEHzOnz9AsFqyGFj+a9OXchag0GqNNeYl3NzGbdvqFU19Nm8WpdXEQxutHbGMtxBZj6laVouFYLR2m53gp6D8EWxDMi7VW9j97zPxK1FQiYLGh0uGAakQ4tTz9zvrcH8gNJcKwvY93xThnk3k/Ac/Ak61pBMQKqFQ0//Q4tvwTm1DnMVqPHS/HXwb50I9QJOQQggj/f4CMUEkcgBtJhNpzb98JT/R0cGz9BXVQqjD2i4dxRAefWPdTHvbBMWwLn+5+R3+fU512wzlzKVLsrjxLNW6EkZJDfPjRcrYX9jWJIfQjwlt3wVJ3gR25KymoPQAy/YFPidKhjsmBKmE5OAzi5OSUXStRkqMkzWaReSVAi08h3GsxP5kCJmULgH8FNw4OQB02AtmgtzGnzydYfUugoerSzoAzLYH/TqOmQeiRRPpoxlFcHQEgEItu8FUyj7/vL8F25xlSaU1+G+4sjbHftoKqu1cCalU++q9jmqf4WDTU3mTXrC6+xzXv6AgJWDZ4jp+D6aD/8RoU+11sIyCoCihn2whICR8XRXAgyEEcAoiH1TuQA1jmF5BDK+/ri7bBm5/PeubMSzo8rId2fAHlgMtvsyzfDe/wcfGcJ9JmL8H5zFtcNXaA8lq7fX72NYodREV/Dd+4yMZKEur4plDOa8wYZEAAiabI9pQct2gRLxiu8t81dAW3Bat2+ohSeQydhipsKJfxptolq7UWbIT80Bu79R7hCuR9NyMVr+NycOZ9a0xPeo6fhv3qd8gyBsav48vQJ2aoF2uslaPi1lpBegZdEyy9GXVgK3AeO8at2EQO+i7/A8lwen/lrb8G1p4r7zHMjdgrNhXM0QW3wC6pXvktxh8KSmQcffVm+S1dhnpQLld6N1P1xAhDb8hGSdBFzmh4HMxKh9ylE2AVaatF9I+lM/GxiIXWluc62hKBdL0KMXrn3eBpsibSnES5mjPAVccRd/nsKBvScrQHc+ZOJlZzEz6Olfue8rW/QRiB0IFGkt/yTtndPlzYA/isRYO9W+VfyPwH459IBoANAB4B7DGA4/gSUBmTQSwCfNgAAAABJRU5ErkJggg==" InformativeScreenshot="055020f5aa8cc0023de15cb3af018e74.jpg" Selector="&lt;html app='chrome.exe' htmlwindowname='estimate' title='오피스디포 공식쇼핑몰' /&gt;" Title="오피스디포 공식쇼핑몰" Url="https://www.officedepot.co.kr/common/report/reportPopup.do?reportUrl=/cart/report.do&amp;reportType=estimate&amp;format=pdf&amp;itemId=4977564304850&amp;itemId=305010&amp;itemId=100220&amp;itemId=1000000004599&amp;estimateSelectItem=1&amp;popupYn=Y" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

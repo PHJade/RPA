@@ -1,0 +1,356 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_03_메일보내기" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_dicConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_str메일" Type="InArgument(x:String)" />
+    <x:Property Name="in_str비번" Type="InArgument(ss:SecureString)" />
+    <x:Property sap2010:Annotation.AnnotationText="Used during transitions between states to represent exceptions other than business exceptions." Name="in_SystemException" Type="InArgument(s:Exception)" />
+    <x:Property Name="in_int총실행건수" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_str오늘날짜" Type="InArgument(x:String)" />
+    <x:Property Name="in_str결과폴더경로" Type="InArgument(x:String)" />
+    <x:Property Name="in_int성공건수" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_int실패건수" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_str견적서파일명" Type="InArgument(x:String)" />
+    <x:Property Name="in_BusinessException" Type="InArgument(s:Exception)" />
+    <x:Property Name="in_list성공" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="in_list실패" Type="InArgument(scg:List(x:String))" />
+  </x:Members>
+  <this:_03_메일보내기.in_str비번>
+    <InArgument x:TypeArguments="ss:SecureString" />
+  </this:_03_메일보내기.in_str비번>
+  <this:_03_메일보내기.in_SystemException>
+    <InArgument x:TypeArguments="s:Exception" />
+  </this:_03_메일보내기.in_SystemException>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>593.3333333333334,2566</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_03_메일보내기_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Globalization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="예외발생 여부에 따라 성공,실패메일을 보낸다." DisplayName="_03_메일보내기" sap:VirtualizedContainerService.HintSize="603.3333333333334,2501.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="str오늘날짜2" />
+      <Variable x:TypeArguments="x:String" Name="str첨부파일경로" />
+      <Variable x:TypeArguments="x:String" Name="str시스템에러메세지" />
+      <Variable x:TypeArguments="x:String" Name="str시스템에러소스" />
+      <Variable x:TypeArguments="x:String" Name="str시스템에러타입" />
+      <Variable x:TypeArguments="x:String" Name="str비지니스에러메세지" />
+      <Variable x:TypeArguments="x:String" Name="str비지니스에러소스" />
+      <Variable x:TypeArguments="x:String" Name="str실패" />
+      <Variable x:TypeArguments="x:String" Name="str성공" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="541.3333333333334,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="496,338" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap2010:Annotation.AnnotationText="in_str오늘날짜 =DateTime.ParseExact(in_str오늘날짜, &quot;yyyyMMdd&quot;, System.Globalization.CultureInfo.InvariantCulture).ToString(&quot;yyyy/MM/dd&quot;)&#xA;&#xA;DateTime.ParseExact 메서드는 &quot;yyyyMMdd&quot; 형식의 문자열로 표시된 날짜를 DateTime 개체로 변환합니다. 그런 다음 ToString 메서드를 사용하여 날짜를 &quot;yyyy/MM/dd&quot; 형식의 문자열로 변환합니다. 이때 CultureInfo.InvariantCulture는 현재 문화권의 정보를 사용합니다." sap:VirtualizedContainerService.HintSize="434,253.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[in_str오늘날짜]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[DateTime.ParseExact(in_str오늘날짜, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture).ToString("yyyy/MM/dd")]</InArgument>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <Sequence DisplayName="05_메일보내기 사용 변수 | Sequence" sap:VirtualizedContainerService.HintSize="541.3333333333334,818" sap2010:WorkflowViewState.IdRef="Sequence_10">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap2010:Annotation.AnnotationText="str오늘날짜2 =  in_str오늘날짜.Replace(&quot;-&quot;,&quot;/&quot;)" DisplayName="str오늘날짜2 | Assign" sap:VirtualizedContainerService.HintSize="479.3333333333333,147.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_9">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[str오늘날짜2]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[in_str오늘날짜.Replace("-","/")]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <ui:MultipleAssign DisplayName="list타입&gt;str타입으로 변경 | Multiple Assign" sap:VirtualizedContainerService.HintSize="479.3333333333333,179.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str성공]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[String.Join(",",in_list성공)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str실패]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[String.Join(",",in_list실패)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+      <Assign sap2010:Annotation.AnnotationText="str첨부파일경로 = in_str결과폴더경로 + &quot;\&quot;+ in_str견적서파일명" DisplayName="str첨부파일경로 | Assign" sap:VirtualizedContainerService.HintSize="479.3333333333333,147.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_10">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[str첨부파일경로]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[in_str결과폴더경로 + "\"+ in_str견적서파일명]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <Assign DisplayName="str비지니스에러메세지 | Assign" sap:VirtualizedContainerService.HintSize="479.3333333333333,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_11">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[str비지니스에러메세지]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[in_BusinessException.Message]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="str비지니스에러소스 | Assign" sap:VirtualizedContainerService.HintSize="479.3333333333333,107.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_12">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[str비지니스에러소스]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[in_BusinessException.Source]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <If sap2010:Annotation.AnnotationText="SystemException is Nothing  =&gt;예외발생 안하면" Condition="[in_SystemException is Nothing]" DisplayName="예외발생 여부 확인 | If" sap:VirtualizedContainerService.HintSize="541.3333333333334,1507.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap2010:Annotation.AnnotationText="성공메일" DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,473.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" sap2010:Annotation.AnnotationText="String.Format(in_dicConfig(&quot;결과메일제목&quot;).ToString,str오늘날짜2,in_dicConfig(&quot;작성자&quot;).ToString) =&gt;제목=[견적서] {0} 오피스디포 견적서_{1}&#xA;&#xA;String.Format(in_dicConfig(&quot;결과메일본문내용&quot;).ToString,str비지니스에러메세지,str비지니스에러소스,in_int총실행건수,in_int성공건수,in_int실패건수,str성공,str실패) =&gt;본문&#xA;&#xA;파일첨부 = str첨부파일경로" Body="[String.Format(in_dicConfig(&quot;결과메일본문내용&quot;).ToString,str비지니스에러메세지,str비지니스에러소스,in_int총실행건수,in_int성공건수,in_int실패건수,str성공,str실패)]" DisplayName="담당자 성공메일 | Send SMTP Mail Message" Email="[in_str메일]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="354,358" sap2010:WorkflowViewState.IdRef="SendMail_7" IgnoreCRL="False" IsBodyHtml="True" Port="587" SecureConnection="Auto" SecurePassword="[in_str비번]" Server="smtp.gmail.com" Subject="[String.Format(in_dicConfig(&quot;결과메일제목&quot;).ToString,str오늘날짜2,in_dicConfig(&quot;작성자&quot;).ToString)]" To="[in_str메일]">
+            <ui:SendMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                <InArgument x:TypeArguments="x:String">[str첨부파일경로]</InArgument>
+              </scg:List>
+            </ui:SendMail.Files>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:SendMail>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:Annotation.AnnotationText="실패메일" DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,841.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap2010:Annotation.AnnotationText="str시스템에러타입 = in_SystemException.Message.ToString" DisplayName="str시스템에러타입 | Assign" sap:VirtualizedContainerService.HintSize="354,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[str시스템에러타입]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[in_SystemException.GetType.ToString]</InArgument>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+          <Assign sap2010:Annotation.AnnotationText="str시스템에러메세지 = in_SystemException.Message.ToString" DisplayName="str시스템에러메세지 | Assign" sap:VirtualizedContainerService.HintSize="354,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[str시스템에러메세지]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[in_SystemException.Message.ToString]</InArgument>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+          <Assign sap2010:Annotation.AnnotationText="str시스템에러소스 = in_SystemException.Message.ToString" DisplayName="str시스템에러소스 | Assign" sap:VirtualizedContainerService.HintSize="354,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[str시스템에러소스]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[in_SystemException.Source.ToString]</InArgument>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" sap2010:Annotation.AnnotationText="String.Format(in_dicConfig(&quot;실패메일제목&quot;).ToString,str오늘날짜2,in_dicConfig(&quot;작성자&quot;).ToString) =&gt;제목=[견적서] {0} 견적서추출 에러발생_{1}&#xA;&#xA;String.Format(in_dicConfig(&quot;개발자실패메일&quot;).ToString,str시스템에러타입,str시스템에러메세지,str시스템에러소스,str비지니스에러메세지,str비지니스에러소스,in_int총실행건수,in_int성공건수,in_int실패건수,str성공,str실패) =&gt;본문&#xA;&#xA;" Body="[String.Format(in_dicConfig(&quot;개발자실패메일&quot;).ToString,str시스템에러타입,str시스템에러메세지,str시스템에러소스,str비지니스에러메세지,str비지니스에러소스,in_int총실행건수,in_int성공건수,in_int실패건수,str성공,str실패)]" DisplayName="개발자실패메일 | Send SMTP Mail Message" Email="[in_str메일]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="354,374" sap2010:WorkflowViewState.IdRef="SendMail_8" IgnoreCRL="False" IsBodyHtml="True" Port="587" SecureConnection="Auto" SecurePassword="[in_str비번]" Server="smtp.gmail.com" Subject="[String.Format(in_dicConfig(&quot;실패메일제목&quot;).ToString,str오늘날짜2,in_dicConfig(&quot;작성자&quot;).ToString)]" To="[in_str메일]">
+            <ui:SendMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+            </ui:SendMail.Files>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:SendMail>
+        </Sequence>
+      </If.Else>
+    </If>
+  </Sequence>
+</Activity>
